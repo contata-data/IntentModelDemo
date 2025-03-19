@@ -78,8 +78,8 @@ def dashboard_page():
         "jobDuration": int(jobDuration),
         "callbackUrl": callbackUrl
         }
-    if st.button("Generate topics"):
-        with st.spinner("Generating topics, please wait..."):
+    if st.button("Create Job"):
+        with st.spinner("Creating Job, please wait..."):
             st.session_state.api_response = generate_topics(payload)
         data = st.session_state.api_response
         print(data)
@@ -94,7 +94,7 @@ def dashboard_page():
     for _ in range(5):
         st.write("")
 
-    if st.button("View intentModel scores"):
+    if st.button("Calculate intentModel scores"):
         with st.spinner("Calculating intentModel scores, please wait..."):
             st.session_state.df = intent_model_scores()  # Store df in session state
 
