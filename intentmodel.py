@@ -84,13 +84,13 @@ def dashboard_page():
         data = st.session_state.api_response
         print(data)
         if data:
-            if data["topics"] == []:
+            if data["suggestedTopics"] == []:
                 st.write("No relevant topics found.")
             else:
-                st.session_state.data_list =  data["topics"]
-                #col1 = st.columns([10])
-                for topic in st.session_state.data_list:
-                    st.write(topic)
+                st.session_state.data_list =  data["suggestedTopics"]
+                ##col1 = st.columns([10])
+                #for topic in st.session_state.data_list:
+                st.write(data)
     for _ in range(5):
         st.write("")
 
@@ -101,7 +101,7 @@ def dashboard_page():
     # Check if df exists in session state before proceeding
     if "df" in st.session_state:
         df = st.session_state.df
-
+        topics = st.session_state.data_list
         min_score, max_score = st.slider(
         "Select score range",
         min_value=0.0, max_value=3.0, value=(1.0, 2.0), step=0.01,
@@ -110,7 +110,7 @@ def dashboard_page():
         if "uuid" in df.columns:    
             df.pop("uuid")
         # Filter DataFrame based on selected score range
-        filtered_df = df[(df["score"] >= min_score) & (df["score"] <= max_score)]
+        filtered_df = df[(df["score"] >= min_score) & (df["score"] <= max_score) & (df["topic"].isin(topics))]
 
         st.write(f"Showing topics with score between {min_score} and {max_score}")
         st.write(filtered_df.head(50))
