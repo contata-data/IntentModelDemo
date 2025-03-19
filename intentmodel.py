@@ -102,9 +102,12 @@ def dashboard_page():
     if "df" in st.session_state:
         df = st.session_state.df
         topics = st.session_state.data_list
+        if topics == []:
+            st.write("Please create a job first to view intent scores of the suggested topics")
+            pass
         min_score, max_score = st.slider(
         "Select score range",
-        min_value=0.0, max_value=3.0, value=(1.0, 2.0), step=0.01,
+        min_value=0.0, max_value=2.0, value=(0.0, 0.5), step=0.01,
         key="score_range_slider"  # Unique key to prevent duplicate ID error
         )
         if "uuid" in df.columns:    
