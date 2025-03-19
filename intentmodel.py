@@ -71,7 +71,7 @@ def dashboard_page():
     query = st.text_input("Enter your query", key="query", value="Whats on your mind?")
     timeRange = st.number_input("Enter timeRange", key="timeRange", min_value=0, step=1, value=10, format="%d")
     jobDuration = st.number_input("Enter jobDuration", key="jobDuration", min_value=0, step=1, value=10, format="%d")
-    callbackUrl = "https://us-central1-relevate-dev-403605.cloudfunctions.net/generateUserTopics" #st.text_input("Enter callbackUrl", key="callbackUrl",value="https://us-central1-relevate-dev-403605.cloudfunctions.net/generateUserTopics")
+    callbackUrl = "https://us-central1-relevate-dev-403605.cloudfunctions.net/intentmodelgenerateusertopics" #st.text_input("Enter callbackUrl", key="callbackUrl",value="https://us-central1-relevate-dev-403605.cloudfunctions.net/generateUserTopics")
     payload = {
         "query": query,
         "timeRange": int(timeRange),
