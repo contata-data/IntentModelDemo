@@ -87,7 +87,7 @@ def dashboard_page():
             if data["suggestedTopics"] == []:
                 st.write("No relevant topics found.")
             else:
-                st.session_state.data_list =  data["suggestedTopics"]
+                st.session_state.data_list =  data["suggestedTopics"][:10]
                 ##col1 = st.columns([10])
                 #for topic in st.session_state.data_list:
                 st.write(data)
