@@ -52,7 +52,7 @@ def intent_model_scores():
 
 def generate_topics(payload):
     """Function to call the API and generate topics."""
-    url = "https://us-central1-relevate-dev-403605.cloudfunctions.net/generateUserTopics"
+    url = "https://us-central1-relevate-dev-403605.cloudfunctions.net/intentmodelgenerateusertopics"
     #print(url)  # Logging for debugging
     #print(payload)
     try:
